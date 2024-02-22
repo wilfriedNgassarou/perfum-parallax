@@ -5,10 +5,10 @@ export default function Section () {
   const [botleOpen, setBotleOpen] = useState(false) ;
   const [botleDown, setBotleDown] = useState(false) ;
 
-  useEffect(() => {
+  function startAnimation() {
     setTimeout(() => {
       setBotleOpen(true) ;
-
+  
       setTimeout(() => {
         setBotleDown(true) ;
         
@@ -16,8 +16,16 @@ export default function Section () {
           setBotleOpen(false);
           setBotleDown(false)
         }, 2000);
-      }, 2000);
-    }, 2000);
+      }, 1500);
+    }, 1500);
+  }
+
+  useEffect(() => {
+    startAnimation();
+
+    setInterval(() => {
+      startAnimation();
+    }, 5000);
   }, [])
 
   let className ;
