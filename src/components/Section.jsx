@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function Section () {
   const [botleOpen, setBotleOpen] = useState(false) ;
   const [botleDown, setBotleDown] = useState(false) ;
+  const [intervalId, setIntervalId] = useState(null) ;
 
   function startAnimation() {
     setTimeout(() => {
@@ -14,18 +15,23 @@ export default function Section () {
         
         setTimeout(() => {
           setBotleOpen(false);
-          setBotleDown(false)
+          setBotleDown(false);
+
         }, 2000);
-      }, 1500);
-    }, 1500);
+
+      }, 2000);
+    }, 2000);
   }
 
   useEffect(() => {
     startAnimation();
 
-    setInterval(() => {
-      startAnimation();
-    }, 5000);
+    setIntervalId(
+      setInterval(() => {
+        startAnimation();
+      }, 6000)
+    )
+
   }, [])
 
   let className ;
@@ -75,8 +81,9 @@ export default function Section () {
           </div>
           <div className="card">
             <p>
-              Les Conditions Générales de Vente s'appliquent. Les politique de confidentialité et les
-              Conditions d´utilisation peuvent être récupérées ici.
+              Les <span className="underline">Conditions Générales de Vente</span> s'appliquent.
+              <span className="underline"> Les politique de confidentialité</span> et 
+              <span className="underline"> les Conditions d´utilisation</span> peuvent être récupérées ici. 
             </p>
             <h3>Disponibilité en magasin</h3>
             <div className="list">
@@ -85,7 +92,7 @@ export default function Section () {
                   <img src="/bus.svg" alt="" />
                 </div>
                   <span>
-                    Livraison standard offerte et retours gratuits dans les 30 jours
+                    Livraison standard offerte et retours gratuits dans les <span className="underline">30 jours</span>
                   </span>
               </div>
               <div className="list-item">
@@ -93,7 +100,7 @@ export default function Section () {
                   <img src="/lock.svg" alt="" />
                 </div>
                   <span>
-                    Click & Collect gratuit en magasin
+                    Click & Collect gratuit en <span className="underline">magasin</span>
                   </span>
               </div>
               <div className="list-item">
@@ -101,7 +108,7 @@ export default function Section () {
                   <img src="/user.svg" alt="" />
                 </div>
                   <span>
-                    Vous avez besoin de conseils au niveau des tailles et du style ?Contactez-nous !
+                    Vous avez besoin de conseils au niveau des tailles et du style ? <span className="underline"> Contactez-nous !</span> 
                   </span>
               </div>
               <div className="list-item">
@@ -109,7 +116,7 @@ export default function Section () {
                   <img src="/package.svg" alt="" />
                 </div>
                   <span>
-                    Offrez un cadeau qui a du style : ajoutez un emballage cadeau BOSS
+                    Offrez un cadeau qui a du style : ajoutez un <span className="underline">emballage cadeau</span> BOSS
                   </span>
               </div>
             </div>
